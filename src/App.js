@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import './App.css';
+import { Edit } from './components/Edit';
 import { Overview } from './components/Overview';
 
 export default class CVApp extends Component {
@@ -58,16 +59,29 @@ export default class CVApp extends Component {
         other: {
           otherInfo: 'I love learning new and interesting computer-related stuff. I go out of my way to do testing with software and hardware to confirm or disprove my hypotheses.',
         }
-      }
+      },
+      isEditing: false,
     };
   }
 
+  setEditing = (value) => {
+    this.setState({ isEditing: value });
+  }
+
+  setData = (value) => {
+    this.setState({ cv: value })
+  }
+
   render() {
-    const { cv } = this.state;
+    const { cv, isEditing } = this.state;
 
     return (
       <div className='container'>
-        <Overview cvData={cv} />
+        {
+          isEditing
+            ? <Edit cvData={cv} setEditing={this.setEditing} setData={this.setData} />
+            : <Overview cvData={cv} setEditing={this.setEditing} />
+        }
         <p className='notice'>All of this data has been made up for this task</p>
       </div>
     )

@@ -61,7 +61,6 @@ const Education = ({ educationData }) => {
 }
 
 const LanguageSkills = ({ languageData }) => {
-  console.log(languageData[0])
   return (
     <div>
       <h2>Language Skills</h2>
@@ -78,21 +77,24 @@ const LanguageSkills = ({ languageData }) => {
 
 const ComputerSkill = ({ skillData, title, cName }) => {
   return (
-    <div className={cName}>
-      <p>
-        {title}
-        {skillData.map((data, i, arr) => {
-          return (
-            <React.Fragment key={i}>{data}{i < arr.length - 1 ? ',' : ''} </React.Fragment>
-          )
-        })}
-      </p>
-    </div>
+    <>
+      {skillData.length > 0 &&
+        <div className={cName}>
+          <p>
+            {title}
+            {skillData.map((data, i, arr) => {
+              return (
+                <React.Fragment key={i}>{data}{i < arr.length - 1 ? ',' : ''} </React.Fragment>
+              )
+            })}
+          </p>
+        </div>
+      }
+    </>
   )
 }
 
 const ComputerSkills = ({ skillsData }) => {
-  console.log(skillsData)
   return (
     <div>
       <h2>Computer Skills</h2>
@@ -114,7 +116,7 @@ const Other = ({ otherData }) => {
   )
 }
 
-export const Overview = ({ cvData }) => {
+export const Overview = ({ cvData, setEditing }) => {
   return (
     <div>
       <h1>Your CV</h1>
@@ -125,6 +127,7 @@ export const Overview = ({ cvData }) => {
       <LanguageSkills languageData={cvData.languageSkills} />
       <ComputerSkills skillsData={cvData.computerSkills} />
       <Other otherData={cvData.other} />
+      <button onClick={() => setEditing(true)}>Edit data</button>
     </div>
   )
 }
