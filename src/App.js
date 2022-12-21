@@ -14,23 +14,25 @@ export default class CVApp extends Component {
           phone: '5555 5555',
           dob: new Date(1007433661000),
         },
-        education: {
-          'TTHK': {
+        education: [
+          {
+            school: 'TTHK',
             title: 'Software Development',
             dateFrom: new Date(1625346000000),
             dateTo: new Date(1626346000000),
             additionalInfo: 'EQF level 4 qualification as a junior IT systems specialist.',
-          }
-        },
-        workExperience: {
-          'SMIT': {
+          },
+        ],
+        workExperience: [
+          {
+            company: 'SMIT',
             position: 'IT Technician',
             dateFrom: new Date(1581026400000),
             dateTo: new Date(1596747600000),
             mainTasks: 'Fix hardware',
             additionalInfo: 'Responded to tickets and fixed internal problems',
-          }
-        },
+          },
+        ],
         languageSkills: {
           estonian: 'Native',
           english: 'C2',
