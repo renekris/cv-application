@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './App.css';
 import { Overview } from './components/Overview';
 
 export default class CVApp extends Component {
@@ -33,11 +34,20 @@ export default class CVApp extends Component {
             additionalInfo: 'Responded to tickets and fixed internal problems',
           },
         ],
-        languageSkills: {
-          estonian: 'Native',
-          english: 'C2',
-          japanese: 'B2',
-        },
+        languageSkills: [
+          {
+            language: 'Estonian',
+            skillLevel: 'Native',
+          },
+          {
+            language: 'English',
+            skillLevel: 'C2',
+          },
+          {
+            language: 'Japanese',
+            skillLevel: 'B2',
+          },
+        ],
         computerSkills: {
           expert: [],
           advanced: ['Javascript', 'C#', 'Linux', 'Windows'],
@@ -56,8 +66,9 @@ export default class CVApp extends Component {
     const { cv } = this.state;
 
     return (
-      <div>
+      <div className='container'>
         <Overview cvData={cv} />
+        <p className='notice'>All of this data has been made up for this task</p>
       </div>
     )
   }
